@@ -9,11 +9,14 @@
 // import DataRendering from "./components/DataRendering";
 // import StopWatch from "./components/StopWatch";
 // import Timer from "./components/Timer";
-// import TodoApp from "./components/Todo-App";
+// import TodoApp from "./components/todo/Todo-App";
 // import FocusInputButton from "./components/FocusInputButton";
 // import PrimeCalculator from "./components/PrimeCalculator";
 // import MemoExample from "./components/MemoExample";
-import CallbackExample from "./components/CallbackExample/CallbackExample";
+// import CallbackExample from "./components/CallbackExample/CallbackExample";
+// import ContextExample from "./components/ContextExample/ContextExample";
+import TodoAppComponent from "./components/todo/Todo-App-Component";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   // const [visible, setVisible] = useState(false);
@@ -23,7 +26,7 @@ function App() {
     //   {visible ? <CountComponent /> : null}
     // </div>
     <div>
-      <CallbackExample />
+      <TodoAppComponent />
     </div>
   );
 }
