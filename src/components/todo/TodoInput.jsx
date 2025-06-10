@@ -1,4 +1,9 @@
-export default function TodoInput({ input, setInput, addContent, inputColor }) {
+import { useContext } from "react";
+import TodoContext from "./TodoContext";
+
+export default function TodoInput() {
+  const { input, setInput, addContent, inputColor } = useContext(TodoContext);
+
   return (
     <>
       <input

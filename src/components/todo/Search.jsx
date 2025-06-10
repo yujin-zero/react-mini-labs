@@ -1,4 +1,8 @@
-export default function Search({ keyword, setKeyword, search }) {
+import { useContext } from "react";
+import TodoContext from "./TodoContext";
+
+export default function Search() {
+  const { keyword, setKeyword, search } = useContext(TodoContext);
   return (
     <>
       <input

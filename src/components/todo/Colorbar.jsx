@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import TodoContext from "./TodoContext";
+
 export default function Colorbar({ changeColor }) {
+  const { setInputColor } = useContext(TodoContext);
+
   return (
     <>
       <button
@@ -8,7 +13,7 @@ export default function Colorbar({ changeColor }) {
           width: "30px",
           height: "30px",
         }}
-        onClick={() => changeColor("#3674B5")}></button>
+        onClick={() => setInputColor("#3674B5")}></button>
       <button
         style={{
           borderRadius: "50%",
@@ -16,7 +21,7 @@ export default function Colorbar({ changeColor }) {
           width: "30px",
           height: "30px",
         }}
-        onClick={() => changeColor("#578FCA")}></button>
+        onClick={() => setInputColor("#578FCA")}></button>
       <button
         style={{
           borderRadius: "50%",
@@ -24,7 +29,7 @@ export default function Colorbar({ changeColor }) {
           width: "30px",
           height: "30px",
         }}
-        onClick={() => changeColor("#A1E3F9")}></button>
+        onClick={() => setInputColor("#A1E3F9")}></button>
       <button
         style={{
           borderRadius: "50%",
@@ -32,7 +37,7 @@ export default function Colorbar({ changeColor }) {
           width: "30px",
           height: "30px",
         }}
-        onClick={() => changeColor("white")}></button>
+        onClick={() => setInputColor("white")}></button>
     </>
   );
 }
