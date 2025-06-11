@@ -16,6 +16,14 @@ function BoardApp() {
       });
   }, []);
 
+  // 삭제하지마ㅠ
+  const removeContent = (id) => {
+    console.log("걍 지워");
+    console.log(id);
+
+    setPosts(posts.filter((item) => item.id !== id));
+  };
+
   return (
     <div className="root">
       <h1>Board App</h1>
@@ -25,6 +33,8 @@ function BoardApp() {
             <th>글 번호</th>
             <th>제목</th>
             <th>작성자 번호</th>
+            <th>수정할래?</th>
+            <th>삭제할래?</th>
           </tr>
           {posts.map((post) => {
             return (
@@ -32,6 +42,12 @@ function BoardApp() {
                 <td>{post.id}</td>
                 <td>{post.title}</td>
                 <td>{post.userId}</td>
+                <td>
+                  <button>수정</button>
+                </td>
+                <td>
+                  <button onClick={() => removeContent(post.id)}>삭제</button>
+                </td>
               </tr>
             );
           })}
