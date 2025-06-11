@@ -1,0 +1,32 @@
+.root {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.board-table {
+  border-collapse: collapse; /* 테이블 셀들의 경계를 어떻게 처리할지를 결정 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.board-table th,
+.board-table td {
+  padding: 13px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.board-table th {
+  background-color: #f1f5f9;
+  font-weight: 500;
+}
+
+.board-table tr:hover {
+  background-color: #f1f5f9;
+  cursor: pointer;
+}
