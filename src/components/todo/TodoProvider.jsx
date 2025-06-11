@@ -25,10 +25,6 @@ export function TodoProvider({ children }) {
     localStorage.setItem("todo-contents", JSON.stringify(contents));
   }, [contents]);
 
-  // const changeColor = (color) => {
-  //   setInputColor(color);
-  // };
-
   const search = contents.filter((item) => item.content.includes(keyword));
 
   const addContent = () => {
@@ -46,8 +42,10 @@ export function TodoProvider({ children }) {
   };
 
   const modifyContent = (id) => {
-    console.log(contents);
     const text = prompt("텍스트 입력");
+    if (text === null) {
+      return;
+    }
     const updated = contents.map((item) =>
       item.id === id ? { ...item, content: text } : item
     );
