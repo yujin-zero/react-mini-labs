@@ -1,11 +1,12 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "../global.css";
-import LazyExample from "./components/LazyExample/LazyExample";
+import withUser from "./components/HOC/withUser";
+import UserDisplay from "./components/HOC/UserDisplay";
+
+const UserDisplayWithUser = withUser(UserDisplay);
 
 function App() {
   return (
     <div>
-      <LazyExample />
+      <UserDisplayWithUser userId={1} />
     </div>
   );
 }
