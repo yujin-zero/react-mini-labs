@@ -1,12 +1,13 @@
 import TodoAppComponent from "./components/todo/Todo-App-Component";
 import { TodoProvider } from "./components/todo/TodoProvider";
-import "bootstrap/dist/css/bootstrap.min.css";
-import StyledComponentExample from "./components/StyledComponentExample/StyledComponentExample";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import "../global.css";
+import TailwindExample from "./components/StyleExamples/TailwindExample";
 
 function App() {
   return (
     <div>
-      <StyledComponentExample />
+      <TailwindExample />
     </div>
   );
 }
