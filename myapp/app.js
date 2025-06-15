@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -9,10 +11,10 @@ var usersRouter = require("./routes/users");
 
 const boardRouter = require("./routes/board");
 const birdsRouter = require("./routes/birds");
+const commentRouter = require("./routes/comment");
 
 const mongoose = require("mongoose");
-const DB_URL =
-  "mongodb+srv://admin:admin1234@cluster0.kikbrh5.mongodb.net/Cluster0";
+const DB_URL = process.env.MONGO_URL;
 mongoose
   .connect(DB_URL, {
     retryWrites: true,
@@ -42,6 +44,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/board", boardRouter);
 app.use("/birds", birdsRouter);
+app.use("/comment", commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
