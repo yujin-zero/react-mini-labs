@@ -1,9 +1,63 @@
 const express = require("express");
+const Board = require("../models/Board");
 const router = express.Router();
 
-router.get("/", function (req, res, next) {
-  console.log("router /board 실행");
-  res.send("This is Board입니다.");
+// router.get("/", function (req, res, next) {
+//   console.log("router /board 실행");
+//   res.send("This is Board입니다.");
+// });
+
+router.post("/", async function (req, res) {
+  /**
+   * 1. req body로 '게시글 제목'과 '게시글 내용'을 받는다.
+   * 2. mongoose를 이용해 저장한다.
+   * 3. response를 만들어 준다.
+   */
+  const data = req.body;
+  console.log(data);
+  const board = await Board.create({
+    title: data.title,
+    content: data.content,
+  });
+
+  res.json(board);
+});
+
+router.get("/", async function (req, res) {
+  const boards = await Board.find();
+  res.json(boards);
+});
+
+// id로 조회
+router.get("/:boardId", async (req, res) => {
+  console.log(req.params);
+  const { boardId } = req.params;
+  const board = await Board.findById(boardId);
+  res.json(board);
+});
+
+/**
+ * PUT  /:resourceId: 특정 resource 수정
+ * DELETE /:resourceId: 특정 resource 삭제
+ */
+
+router.put("/:boardId", async (req, res) => {
+  const { boardId } = req.params;
+  const updateData = req.body;
+  const board = await Board.findById(boardId);
+  board.title = updateData.title;
+  board.content = updateData.content;
+  await board.save();
+
+  res.json(board);
+});
+
+router.delete("/:boardId", async (req, res) => {
+  const { boardId } = req.params;
+  // const board = await Board.findById(boardId);
+  const board = await Board.findByIdAndDelete(boardId);
+
+  res.json(board);
 });
 
 module.exports = router;
