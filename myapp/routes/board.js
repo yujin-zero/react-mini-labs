@@ -61,6 +61,23 @@ router.get("/:boardId", async (req, res) => {
   console.log("viewCount: ", req.session.viewCount);
   console.log("req.session: ", req.session);
 
+  /**
+   * 상세게시글 방문할 때마다, 최근 방문한 게시글(최대 10개)의 재목을
+   * 배열로 세션에 저장하여 관리하시요.
+   */
+
+  // req.session.destroy();
+  if (req.session.boardPath) {
+    if (req.session.boardPath.length >= 10) {
+      req.session.boardPath.shift();
+    }
+    req.session.boardPath.push(board.title);
+  } else {
+    req.session.boardPath = [board.title];
+  }
+  console.log(req.session.boardPath);
+  console.log(req.session.boardPath.length);
+
   res.json(board);
 });
 
