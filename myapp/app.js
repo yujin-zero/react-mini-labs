@@ -51,6 +51,24 @@ app.use(
     },
   })
 );
+app.use((req, res, next) => {
+  console.log("미들웨어");
+  console.log(req.originalUrl);
+
+  /**
+   * 모든 요청 url의 path를 session의 배열로 관리
+   */
+
+  if (req.session.urlPath) {
+    req.session.urlPath.push(req.originalUrl);
+  } else {
+    req.session.urlPath = [req.originalUrl];
+  }
+
+  console.log(req.session.urlPath);
+
+  next();
+});
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
