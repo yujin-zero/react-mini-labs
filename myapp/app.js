@@ -9,6 +9,8 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
+const session = require("express-session");
+
 const boardRouter = require("./routes/board");
 const birdsRouter = require("./routes/birds");
 const commentRouter = require("./routes/comment");
@@ -38,6 +40,17 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "<my-secret>",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      httpOnly: true,
+      secure: false, // https만 가능
+    },
+  })
+);
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);

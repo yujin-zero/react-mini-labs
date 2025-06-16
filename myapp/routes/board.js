@@ -15,6 +15,7 @@ router.post("/", async function (req, res) {
    */
   const data = req.body;
   console.log(data);
+
   const board = await Board.create({
     title: data.title,
     content: data.content,
@@ -43,6 +44,23 @@ router.get("/:boardId", async (req, res) => {
   console.log(req.params);
   const { boardId } = req.params;
   const board = await Board.findById(boardId);
+
+  // Session 사용법
+  // req.session
+
+  if (req.session.viewCount) {
+    req.session.viewCount++;
+  } else {
+    req.session.viewCount = 1;
+  }
+
+  req.session.profile = {
+    id: 1,
+    name: "yujin",
+  };
+  console.log("viewCount: ", req.session.viewCount);
+  console.log("req.session: ", req.session);
+
   res.json(board);
 });
 
