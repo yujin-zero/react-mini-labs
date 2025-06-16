@@ -24,7 +24,17 @@ router.post("/", async function (req, res) {
 });
 
 router.get("/", async function (req, res) {
+  // 쿠키를 사용해보아요
+  const cookies = req.cookies;
+  console.log("요청 쿠키", cookies);
+
+  // 쿠키 설정 (set-cookie HTTP-header)
   const boards = await Board.find();
+  res.cookie("cookieName", "cookieValue");
+  res.cookie("SecureCookieName", "SecureCookieValue", {
+    httpOnly: true,
+  });
+
   res.json(boards);
 });
 

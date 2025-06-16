@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const DB_URL =
-  "mongodb+srv://admin:admin1234@cluster0.kikbrh5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const DB_URL = "";
 
 const Cat = require("./models/Cat");
 const Movie = require("./models/Movie");
