@@ -7,13 +7,14 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+// var usersRouter = require("./routes/users");
 
 const session = require("express-session");
 
 const boardRouter = require("./routes/board");
 const birdsRouter = require("./routes/birds");
 const commentRouter = require("./routes/comment");
+const usersRouter = require("./routes/users");
 
 const mongoose = require("mongoose");
 const DB_URL = process.env.MONGO_URL;
