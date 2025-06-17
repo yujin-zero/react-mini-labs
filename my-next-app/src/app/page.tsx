@@ -6,6 +6,8 @@ export default function Home() {
 			<h1>안녕하세요</h1>
 			<p>저는 첫번째 페이지를 만들었습니다.</p>
 			<Image src="/my_image.jpg" width={200} height={200} alt="스누피" />
+
+			<button className="my-btn">버튼</button>
 		</div>
 	);
 }
