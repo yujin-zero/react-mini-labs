@@ -1,3 +1,4 @@
+// src/components/blocks/PostItem/PostItem.tsx
 import PostItemClient from './PostItem.client';
 
 export default function PostItem({ postId }: { postId: string }) {
