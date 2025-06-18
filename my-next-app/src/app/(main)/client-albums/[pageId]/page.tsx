@@ -15,6 +15,11 @@ export default function AlbumsDetailPage() {
 	const params = useParams<{
 		pageId: string;
 	}>();
+	const [visible, setVisible] = useState(false);
+
+	const changeVisible = () => {
+		setVisible(!visible);
+	};
 
 	useEffect(() => {
 		fetch(`https://jsonplaceholder.typicode.com/albums/${params.pageId}`)
@@ -25,7 +30,8 @@ export default function AlbumsDetailPage() {
 	return (
 		<div>
 			<h1>Album 리스트 - client</h1>
-			{albums?.title}
+			<button onClick={changeVisible}>버튼</button>
+			<p>{visible && albums && albums.title}</p>
 		</div>
 	);
 }
