@@ -18,3 +18,19 @@ export default async function AlbumDetailPage({ params }: AlbumDetailProps) {
 
 	return <AlbumDetailClient title={data.title} />;
 }
+
+interface Album {
+	id: number;
+	title: string;
+}
+
+export async function generateStaticParams() {
+	const resp = await fetch(`https://jsonplaceholder.typicode.com/albums/`);
+
+	const data = await resp.json();
+	return data.map((album: Album) => {
+		return {
+			albumId: album.id.toString(),
+		};
+	});
+}

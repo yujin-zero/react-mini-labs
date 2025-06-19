@@ -35,3 +35,12 @@ export default function AlbumsDetailPage() {
 		</div>
 	);
 }
+
+export async function generateStaticParams() {
+	const res = await fetch('https://jsonplaceholder.typicode.com/albums');
+	const data: Album[] = await res.json();
+
+	return data.map((album) => ({
+		pageId: album.id.toString(),
+	}));
+}

@@ -2,7 +2,7 @@
 // import PostList from '@/components/blocks/PostList';
 
 import PostItem from '@/components/blocks/PostItem/PostItem';
-import { fetchPost } from '@/services/post-service';
+import { fetchPost, fetchPosts } from '@/services/post-service';
 
 export interface PostDetailProps {
 	params: Promise<{
@@ -25,4 +25,13 @@ export default async function PostDetailPage({ params }: PostDetailProps) {
 			</div>
 		</div>
 	);
+}
+
+export async function generateStaticParams() {
+	const data = await fetchPosts();
+	return data.map((post) => {
+		return {
+			postId: post.id,
+		};
+	});
 }

@@ -8,3 +8,11 @@ export default function BlogDetailPage() {
 		</div>
 	);
 }
+
+export function generateStaticParams() {
+	return [
+		{
+			slug: '1',
+		},
+	];
+}
