@@ -10,6 +10,7 @@ var indexRouter = require("./routes/index");
 // var usersRouter = require("./routes/users");
 
 const session = require("express-session");
+const cors = require("cors");
 
 const boardRouter = require("./routes/board");
 const birdsRouter = require("./routes/birds");
@@ -37,6 +38,12 @@ var app = express();
 // app.set("views", path.join(__dirname, "views"));
 // app.set("view engine", "ejs");
 
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
