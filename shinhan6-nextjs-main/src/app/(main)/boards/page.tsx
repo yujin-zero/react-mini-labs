@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
 type Board = {
   _id: string;
@@ -21,6 +21,10 @@ export default function BoardsPage() {
   return (
     <Container className="pt-5">
       <h2 className="fw-bold mb-4 text-center">게시글 목록</h2>
+
+      <div className="d-flex justify-content-end mb-3">
+        <Button variant="outline-primary">게시글 작성</Button>
+      </div>
 
       <Row className="g-3">
         {boardList.map((board) => (
