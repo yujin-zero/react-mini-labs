@@ -16,7 +16,7 @@ export default function MyNavbar() {
             프로젝트
           </Link>
 
-          <div className="d-none d-lg-flex flex-row gap-2">
+          <div className="d-none d-sm-flex flex-row gap-2">
             <Link href="/" className="nav-link">
               Home
             </Link>
@@ -26,7 +26,7 @@ export default function MyNavbar() {
             <Link href="/posts" className="nav-link">
               Posts
             </Link>
-            <Link href="/articles" className="nav-link">
+            <Link href="/boards" className="nav-link">
               게시글
             </Link>
           </div>
