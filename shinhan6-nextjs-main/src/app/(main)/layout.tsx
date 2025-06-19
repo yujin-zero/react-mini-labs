@@ -2,6 +2,7 @@
 // -> /app/(main) 아래 존재하는 모든 페이지들이 공유할 레이아웃
 
 import MyNavbar from "@/components/layouts/MyNavbar/MyNavbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function MainLayout({
   children,

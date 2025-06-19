@@ -1,29 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 export default function MyNavbar() {
-  const router = useRouter();
   return (
-    <div className="bg-blue-200">
-      <ul className="flex justify-center gap-4 items-center">
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          {/* <Link href="/portfolio">포트폴리오</Link> */}
-          <div
-            onClick={() => {
-              router.push("/portfolio");
-            }}>
-            포트폴리오
+    <Navbar expand="lg" className="bg-light px-3" fixed="top">
+      <Container
+        fluid
+        className="d-flex justify-content-between align-items-center">
+        <div className="d-flex align-items-center">
+          <Link href="/" className="fw-bold me-3 nav-link">
+            프로젝트
+          </Link>
+
+          <div className="d-none d-lg-flex flex-row gap-2">
+            <Link href="/" className="nav-link">
+              Home
+            </Link>
+            <Link href="/portfolio" className="nav-link">
+              포트폴리오
+            </Link>
+            <Link href="/posts" className="nav-link">
+              Posts
+            </Link>
+            <Link href="/articles" className="nav-link">
+              게시글
+            </Link>
           </div>
-        </li>
-        <li>
-          <Link href="posts">Posts</Link>
-        </li>
-      </ul>
-    </div>
+        </div>
+
+        <div>
+          <Navbar.Toggle aria-controls="right-navbar-collapse" />
+          <Navbar.Collapse
+            id="right-navbar-collapse"
+            className="justify-content-end">
+            <Nav>
+              <Link href="/login" className="nav-link">
+                로그인
+              </Link>
+              <Link href="/register" className="nav-link">
+                회원가입
+              </Link>
+            </Nav>
+          </Navbar.Collapse>
+        </div>
+      </Container>
+    </Navbar>
   );
 }
