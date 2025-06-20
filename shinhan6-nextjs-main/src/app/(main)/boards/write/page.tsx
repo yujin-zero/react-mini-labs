@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import { useRouter } from "next/navigation";
 
 export default function WritePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const router = useRouter();
+
   const postBoard = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -23,6 +26,7 @@ export default function WritePage() {
 
     if (response.ok) {
       console.log("등록함. 확인해보셈");
+      router.push("/boards");
     }
   };
 
