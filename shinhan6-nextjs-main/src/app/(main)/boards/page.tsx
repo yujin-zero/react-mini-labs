@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import Link from "next/link";
 
 type Board = {
   _id: string;
@@ -23,7 +24,9 @@ export default function BoardsPage() {
       <h2 className="fw-bold mb-4 text-center">게시글 목록</h2>
 
       <div className="d-flex justify-content-end mb-3">
-        <Button variant="outline-primary">게시글 작성</Button>
+        <Link href="/boards/write">
+          <Button variant="outline-primary">게시글 작성</Button>
+        </Link>
       </div>
 
       <Row className="g-3">
