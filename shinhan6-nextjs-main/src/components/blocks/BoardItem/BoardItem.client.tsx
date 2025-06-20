@@ -41,7 +41,9 @@ export default function BoardItemClient({ board }: BoardItemClientProps) {
       <h2 className="mb-4">게시글 조회</h2>
       <Form>
         <div className="d-flex justify-content-end mb-3">
-          <Button variant="outline-warning">수정</Button>
+          <Button variant="outline-warning" href={`/boards/edit/${board._id}`}>
+            수정
+          </Button>
           <Button variant="outline-danger" onClick={deleteBoard}>
             삭제
           </Button>
