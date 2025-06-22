@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Container, Button, Form } from "react-bootstrap";
+import { Container, Button, Form, Row, Col, Card } from "react-bootstrap";
 import { useRouter } from "next/navigation";
 
 type Board = {
@@ -14,10 +14,17 @@ type BoardItemClientProps = {
   board: Board;
 };
 
+type Comment = {
+  _id: string;
+  boardId: string;
+  content: string;
+};
+
 export default function BoardItemClient({ board }: BoardItemClientProps) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const router = useRouter();
+  const [comments, setComments] = useState<Comment[]>([]);
 
   const deleteBoard = () => {
     fetch(`http://localhost:4001/board/${board._id}`, {
@@ -31,9 +38,19 @@ export default function BoardItemClient({ board }: BoardItemClientProps) {
   };
 
   useEffect(() => {
-    console.log(board);
     setTitle(board.title);
     setContent(board.content);
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:4001/comment/")
+      .then((res) => res.json())
+      .then((data) => {
+        const filtered = data.filter(
+          (comment: { boardId: string }) => comment.boardId === board._id
+        );
+        setComments(filtered);
+      });
   }, []);
 
   return (
@@ -59,6 +76,19 @@ export default function BoardItemClient({ board }: BoardItemClientProps) {
           onChange={(e) => setContent(e.target.value)}
           readOnly></Form.Control>
       </Form>
+
+      <h3 className="mt-4">댓글</h3>
+      {comments.map((comment) => (
+        <Row key={comment._id} className="g-3">
+          <Card className="border rounded-3 h-100">
+            <Card.Body>
+              <Card.Title className="mb-2 fw-semibold">
+                {comment.content}
+              </Card.Title>
+            </Card.Body>
+          </Card>
+        </Row>
+      ))}
     </Container>
   );
 }
