@@ -41,7 +41,7 @@ export default function MyNavbar() {
               <Link href="/login" className="nav-link">
                 로그인
               </Link>
-              <Link href="/register" className="nav-link">
+              <Link href="/signup" className="nav-link">
                 회원가입
               </Link>
             </Nav>
