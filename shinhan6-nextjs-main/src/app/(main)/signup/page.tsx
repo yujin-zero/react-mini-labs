@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Card } from "react-bootstrap";
 import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
@@ -27,23 +27,41 @@ export default function SignupPage() {
   };
 
   return (
-    <Container className="pt-5">
-      <h2 className="mb-4">회원가입</h2>
-      <Form onSubmit={signup}>
-        <Form.Label>이메일</Form.Label>
-        <Form.Control
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}></Form.Control>
-        <Form.Label>비밀번호</Form.Label>
-        <Form.Control
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}></Form.Control>
-        <div className="d-flex justify-content-end mt-3">
-          <Button variant="outline-info" type="submit">
-            회원가입
-          </Button>
-        </div>
-      </Form>
+    <Container
+      className="d-flex justify-content-center align-items-center"
+      style={{ minHeight: "100vh" }}>
+      <Card style={{ width: "100%", maxWidth: "400px" }} className="shadow p-4">
+        <Card.Body>
+          <h2 className="mb-4 text-center fw-bold">회원가입</h2>
+          <Form onSubmit={signup}>
+            <Form.Group className="mb-3">
+              <Form.Label>이메일</Form.Label>
+              <Form.Control
+                type="email"
+                value={email}
+                placeholder="이메일을 입력하세요"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-4">
+              <Form.Label>비밀번호</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                placeholder="비밀번호를 입력하세요"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <div className="d-grid">
+              <Button variant="info" type="submit">
+                회원가입
+              </Button>
+            </div>
+          </Form>
+        </Card.Body>
+      </Card>
     </Container>
   );
 }

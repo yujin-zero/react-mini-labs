@@ -31,11 +31,11 @@ export default function BoardsPage() {
 
       <Row className="g-3">
         {boardList.map((board) => (
-          <Link
-            href={`/boards/${board._id}`}
-            key={board._id}
-            className="text-decoration-none">
-            <Col key={board._id} xs={12} md={6}>
+          <Col key={board._id} xs={12} md={6}>
+            <Link
+              href={`/boards/${board._id}`}
+              key={board._id}
+              className="text-decoration-none">
               <Card className="border rounded-3 h-100">
                 <Card.Body>
                   <Card.Title className="mb-2 fw-semibold">
@@ -50,8 +50,8 @@ export default function BoardsPage() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </Col>
-          </Link>
+            </Link>
+          </Col>
         ))}
       </Row>
     </Container>
