@@ -22,6 +22,7 @@ export default function LoginPage() {
 
     if (response.ok) {
       console.log("로그인 완료");
+      localStorage.setItem("isLoggedIn", "true");
       router.push("/");
     } else {
       console.log("로그인 실패");

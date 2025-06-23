@@ -1,11 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 
 export default function MyNavbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loggedIn);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+    router.push("/");
+  };
+
   return (
     <Navbar expand="lg" className="bg-light px-3" fixed="top">
       <Container
@@ -38,12 +55,20 @@ export default function MyNavbar() {
             id="right-navbar-collapse"
             className="justify-content-end">
             <Nav>
-              <Link href="/login" className="nav-link">
-                로그인
-              </Link>
-              <Link href="/signup" className="nav-link">
-                회원가입
-              </Link>
+              {isLoggedIn ? (
+                <Button variant="outline-danger" onClick={handleLogout}>
+                  로그아웃
+                </Button>
+              ) : (
+                <>
+                  <Link href="/login" className="nav-link">
+                    로그인
+                  </Link>
+                  <Link href="/signup" className="nav-link">
+                    회원가입
+                  </Link>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </div>
